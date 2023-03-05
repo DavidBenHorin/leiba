@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset=""UTF-8">
+        <!-- lets add some bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+        integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.29/browser.js"></script>
+<title>
+    Leiba's Page
+</title>
+</head>
+<body id="body">
+
+<script>
+
+// for JavaScript documentation, see https://developer.mozilla.org/en-US/docs/Web/JavaScript
+    console.log(4);
+    let price = 100;
+    console.log(price);
+    // template literal -- put something variable into something constant
+    let name = "Samachti";
+    console.log(`My name is ${name}.`)
+    // remember that to use a template literal, you can't use "" quotes. it has to be the ` quote at the top left of the keyboard
+    day = "Yom Rishon";
+    if (day == 'Shabbat') {
+        console.log("Shabbat Shalom!")
+    } else {
+        console.log("Get to work!")
+    }
+    let child = "Samachti";
+    switch (child) {
+        case 'Ari':
+            console.log("Hey buddy!");
+            break;
+        case 'Leiba':
+            console.log("My Libi!");
+            break;
+        case 'Samachti':
+            console.log("Sweetie!!!");
+            break;
+    }
+
+    function areaSquare(height, width) {
+        let area = height * width;
+        return area;
+    }
+    console.log(areaSquare(9, 5));
+
+    //lets turn pounds into kilograms 1lb = .4536 kg
+    function kilo(pounds) {
+        let kg = pounds * .4536;
+        return kg;
+    }
+    console.log(kilo(195));
+
+    // good. not do it in arrow notation
+    const kilog = (pounds) => {
+        let kg = pounds * .4536;
+        return kg;
+    }
+
+    console.log(kilog(200));
+
+    let leibasSiblings = ['Ari', 'Samachti'];
+    console.log(leibasSiblings[0]);
+
+    let citiesInJezreel = ['Afula', 'Megiddo', 'Shunem', 'Al-Nasrat', 'Balfouria'];
+    console.log('Some of the cities in the Jezreel are:')
+    for (let i = 0; i < 3; i++) {
+        console.log(citiesInJezreel[i]);
+    }
+
+    console.log('Most of the cities in the Jezreel are:')
+    for (let i = 0; i < citiesInJezreel.length; i++) {
+        console.log(i + ": " + citiesInJezreel[i]);
+    }
+
+    const firstMessage = 'I will print!';
+    const secondMessage = 'I will not print!';
+
+    // A do while with a stopping condition that evaluates to false
+    do {
+        console.log(firstMessage)
+    } while (true === false);
+
+    // A while loop with a stopping condition that evaluates to false
+    while (true === false) {
+        console.log(secondMessage)
+    };
+
+    // interesting to note that a variable is seen as an array of strings
+    const animal = "cat";
+
+    for (let i = 0; i < animal.length; i++) {
+        console.log(animal[i]);
+    }
+    // prints three lines, c, a, t. As if the variable itself is an array of strings
+
+    //set a variable to a funciton. Take the value the function gives you and do anything you want with it
+    const workTime = () => {
+        console.log("I am very busy right now.");
+    };
+    const busy = workTime;
+    busy();
+
+    const artists = ['Picasso', 'Khalo', 'Worhol', 'Utramaro'];
+    artists.forEach(artist => {
+        console.log(artist + 'is one of my favorite artists.')
+    });
+
+    const misparim = [1, 2, 3, 4, 5];
+    const misparimsq = misparim.map(mispar => { return mispar * mispar; });
+    console.log(misparimsq);
+
+    const things = ['desk', 'chair', 5, 'backpack', 3.14, 100];
+    const onlynumbers = things.filter(thing => {
+        return typeof thing === 'number';
+    })
+    console.log(onlynumbers);
+    things.forEach(thing => console.log(`this is a ${thing}`))
+
+    // an object literal {} with two key:value pairs
+    let spaceship = {
+        'Fuel Type': 'diesel',
+        color: 'silver'
+    };
+    console.log(spaceship.color);
+
+    // remember the other way to call values inside objects? 
+    // It's called bracket notation
+    console.log(spaceship['Fuel Type']);
+
+    // replace a value
+    spaceship.color = 'Black';
+
+    // add a value
+    spaceship.speed = 'Warp 10';
+
+    console.log(spaceship.color);
+
+    // here is our method. A function inside the object. This is in e6 form
+    // notice we just set the variable to an object. We should be able to add properties and values along with the method
+    let takeOff = "3, 2, 1, blast off!"
+
+    const alienShip = {
+        invade() {
+            console.log('Hello! We have come to dominate your planet. Instead of Earth, it shall be called New Xaculon.')
+        },
+        blastOff() {
+            console.log(takeOff);
+        }
+
+    };
+
+    alienShip.invade();
+    alienShip.blastOff();
+
+    // let's put an object inside an object
+
+    let car = {
+        'Steering Wheel': {
+            yearBuilt: 2019,
+            model: 'E43N3',
+            color: 'grey'
+        },
+        tires: {
+            yearBuilt: 2017,
+            model: '49T4B',
+            color: 'black'
+        }
+    }
+
+    console.log(car['Steering Wheel'].yearBuilt);
+    console.log(car.tires.color);
+
+    // back to the "this" When you are inside an object and you need to call 
+    // variables, methods, or properties that are still inside that object, 
+    // use the "this" command. 
+
+    const goat = {
+        dietType: 'herbivore',
+        makeSound() {
+            console.log('baaa');
+        },
+        diet() {
+            console.log(this.dietType);
+        }
+    };
+
+    goat.diet();
+
+    const Shula = {
+        name: 'Shulamit',
+        height: '5 ft 10',
+        hair: 'black',
+        age: 18,
+        energyLevel: 125,
+        iLoveShula() {
+            return `My wife is ${this.name}. I am ${this.height} with 
+        ${this.hair} hair.`
+        }
+    }
+    console.log(Shula.iLoveShula());
+
+    // let's make a factory function where anyone can enter different data for different instances
+    const newClient = (clientName, assignment, hourlyPay, duration, status) => {
+        return {
+            Name: clientName,
+            'Type of Work': assignment,
+            Pay: hourlyPay,
+            'Length of Job': duration,
+            Status: status,
+            hired() {
+                console.log(`We got the job at ${this.Name}!`);
+            }
+        }
+    }
+
+    const Google = newClient('Google', 'writing', '$200 per hour', '5 years', 'hired');
+    console.log(Google.hired());
+
+    // es6 arrow notation for a function with multiple parameters
+    // note that you don't have to assign paramaters to property names inside the object
+    const person = (age, birthplace) => {
+        return {
+            name,
+            age
+        }
+    }
+
+    const David = person(48, 'Manhattan');
+    console.log(David.age);
+
+
+</script>
+
+    <h1>This is Leiba's Page</h1>
+
+<!-- Let's set the date using the Date() object 
+from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date -->
+<script>
+const date = new Date();
+
+    switch (new Date().getDay()) {
+        case 0:
+            dayOfWeek = "Sunday";
+            break;
+        case 1:
+            dayOfWeek = "Monday";
+            break;
+        case 2:
+            dayOfWeek = "Tuesday";
+            break;
+        case 3:
+            dayOfWeek = "Wednesday";
+            break;
+        case 4:
+            dayOfWeek = "Thursday";
+            break;
+        case 5:
+            dayOfWeek = "Friday";
+            break;
+        case 6:
+            dayOfWeek = "Saturday";
+    }
+
+        switch (new Date().getMonth()) {
+case 0:
+    thisMonth = "January";
+    break;
+case 1:
+    thisMonth = "February";
+    break;
+case 2:
+    thisMonth = "March";
+    break;
+case 3:
+    thisMonth = "April";
+    break;
+case 4:
+    thisMonth = "May";
+    break;
+case 5:
+    thisMonth = "June";
+    break;
+case 6:
+    thisMonth = "July";
+    break;
+case 7:
+    thisMonth = "August";
+    break;
+case 8:
+    thisMonth = "September";
+    break;
+case 9:
+    thisMonth = "October";
+    break;
+case 10:
+    thisMonth = "November";
+    break;
+case 11:
+    thisMonth = "December";
+    break;   
+        }
+
+let theDate = document.createElement('h4');
+theDate.innerHTML = dayOfWeek + ", " + thisMonth + " " + date.getDate() +  ", " + date.getFullYear();
+
+document.body.appendChild(theDate);
+</script>
+
+    <div>
+        <p>I am a page for my lovely Leiba</p>
+        <p>My favorite person is my daddy!</p>
+
+        <!-- let's create something new by tweaking the DOM with some JavaScript
+        remember, the DOM makes this entire HTML page a JS object called document() -->
+        <script>
+            let newElement = document.createElement('p');
+            newElement.id = 'new';
+            newElement.innerHTML = 'This is a new line';
+            // first we create and fill the elelemt
+            document.body.appendChild(newElement);
+            // now we assign it a place on the page
+
+            let eventElement = document.createElement('button');
+            eventElement.id = 'toggle'
+            eventElement.innerHTML = "Make the Line Dissappear"
+            document.body.appendChild(eventElement);
+
+            // Here is the functionality. If you onClick one element, it will change another one
+            let toggle = document.getElementById('new');
+            eventElement.onclick = () => {toggle.hidden = true; eventElement.innerHTML = "It's disappeared";  }
+                //the function we created is called an "event handler" - it responds to one of hundreds of events happening on every page
+
+            // How about we put something up top -- the first child element of the <body> element
+            let firstBody = document.createElement('p');
+            // Once you set up firstBody as a variable, it becomes it's own obejct with properties, event triggers, and values
+            firstBody.innerHTML = "I am at the top of the page"
+            let body = document.getElementById('body');
+            
+            // you can print out elements and properties of the nodes
+            console.log(firstBody.innerHTML);
+            
+            // how about on the page itself
+            let newBody = document.createElement('b');
+            newBody.innerHTML = firstBody.innerHTML;
+                
+            // let's place our new element somewhere else in the DOM
+            let highup = document.getElementById('new');
+            highup.appendChild(newBody); 
+
+            let readTitle = document.createElement('h3');
+            readTitle.id = "readTitle"
+            let readMore = document.createElement('p');
+            readTitle.innerHTML = "A Tale of Two Cities (click to read more)";
+            
+            // default the "read more" section to hidden
+            readMore.style.display = "hidden";
+            readMore.style.fontWeight = "normal";
+            readMore.innerHTML = "An article by Leiba's daddy about Afula and Syosset.";
+            
+            // here is our event, and our event handler function. 
+            // The event is a method, and the changes are properties
+            readTitle.onclick = () => {readMore.style.display = 'block'; readTitle.appendChild(readMore); }
+
+            // place these babies!!!
+            toggle.appendChild(readTitle);
+
+        </script>
+    </div>
+
+    <!-- playing a little bit with bootstrap -->
+<header id="main-header" class="bg-success text-white p-4 mb-3">
+    <div class="container">
+        <h1 id="header-title">A header section <span style="display:none">123</span></h1>
+    </div>
+</header>
+
+<!-- did you know that you can see all the properties of the document model? -->
+<script>
+console.dir(document);
+</script>
+
+<!-- now that we can see all the properties in the page, let's display one -->
+<h3 id="title-text">
+<script>
+let h3 = document.getElementById('title-text');
+h3.innerHTML = document.title;
+</script>
+</h3>
+<p id="page-url">
+<script>
+let url = document.getElementById('page-url');
+url.innerHTML = document.URL;
+// remember, you can play with the style using DOM manipulation
+url.style.fontSize = "1.5em";
+</script>
+</p>
+
+<!-- lets play with DOM and classes -->
+<p class="bold-font">
+    statement one
+</p>
+
+<p class="bold-font">
+    statement two
+</p>
+
+<p class="bold-font">
+    statement three
+</p>
+
+<script>
+// fine. three elements with class name "bold-font" that print normal text 
+let items = document.getElementsByClassName('bold-font');
+
+// if you want to change just one, treat it as an array 
+items[0].style.fontSize = '1.5em';
+
+// you can't manipulate all items with one class unless you iterate.
+for (i=0; items.length; i++) {
+  items[i].style.fontWeight = 'bold';
+};
+
+</script>
+
+<!-- let's create a new element using the DOM.
+    First, set an element to be the parent
+-->
+<span id="placer"></span>
+
+<script>
+    // Next, create your new element, attributes, and nodes inside the element
+    const newDiv = document.createElement('div');
+    newDiv.className = 'New Div';
+    newDiv.id = "DivID";
+    newDiv.setAttribute('style', "fontWeight: bold");
+    const divText = document.createTextNode('This is a new <div>');
+    
+    // make sure to append elements you create with their nodes and children
+    newDiv.appendChild(divText);
+    
+    // Now, take any element, and make this new element it's child. 
+    // You can probably get more sophisticated if you want, like siblings and parents, 
+    // but for now stick with children,
+    const placer = document.getElementById('placer');
+    placer.appendChild(newDiv);
+</script>
+
+<!-- Let's do some DOM event handling. Here is a bootstrap button
+with function button1 fired upon event onclick -->
+<br>
+<button class="btn btn-dark btn-block" id="aButton">Click for Event Firing</button>
+
+<!-- Do this using an addEventListener method once you call the <button> element 
+    like variable object -->
+<script>
+    const button = document.getElementById('aButton');
+
+    button.addEventListener('click', button1);
+    button.addEventListener('click', button2);
+    button.addEventListener('click', newTitle);
+
+    function button1() {
+            console.log("clicked again");
+        }
+
+    function button2() {
+        console.log("and again");
+    }
+
+    function newTitle() {
+        const nwDiv = document.createElement('div');
+        nwDiv.className = 'nwButton';
+        nwDiv.setAttribute('style', "fontWeight: italic");
+        const divText = document.createTextNode('The button clicked me!');
+        nwDiv.appendChild(divText);
+
+    // id = placer is an element above this button
+        const placer = document.getElementById('placer');
+        placer.appendChild(nwDiv);
+    }
+    // let's get a little creative and manipulate an element somewhere else!
+</script>
+
+<!-- event parameters always get me confused. Basically, it is e, which is
+an object that represents the event itself -->
+
+<br>
+<button class="btn btn-dark btn-block" id="bButton">Click Here for Event Parameter</button>
+
+<script>
+    const bButton = document.getElementById('bButton');
+    bButton.addEventListener('click', bButton1);
+
+    // e is the event itself. It is the event you are listening for
+    // it is the eventParameter, which is an object with name e
+    function bButton1(e) {
+        // this gives you all of the long list of properties and values of the event object
+        console.log(e);
+
+    //   this gives you the specific line of html code where the element hosting the event is  
+        console.log(e.target);
+    // how about the specific event type (for all event types: https://data-flair.training/blogs/javascript-event-types/)
+    console.log(e.type);
+            }
+
+            </script>
+    
+    <br>
+    <button class="btn btn-dark btn-block" id="cButton">Click Here for Funky Event Handling</button>
+
+    <script>
+    const cButton = document.getElementById('cButton');
+    cButton.addEventListener('mouseover', boxEvent); // every time the mouse moves -- you can do some funky things with this!
+
+        function boxEvent(e) {
+            console.log('EVENT TYPE: ' + e.type);
+            output = '<h3>MouseX:' + e.offsetX + '<br>MouseY:' + e.offsetY + '<h3>';
+            cButton.innerHTML = output;
+        }
+
+        </script>
+
+        <script>
+            // let's create a new <li> element
+                const li = document.createElement('li'); 
+                // you can create any type of element, then assign attributes, then place it inside the DOM
+
+        </script>
+    
+<!-- let's create an animal object just to show the getter and setter methods -->
+<script>
+let halley = {
+_name: 'Halley',
+_behavior: 0,
+
+get name() {
+return this._name;
+},
+
+get behavior() {
+return this._behavior;
+},
+
+incrementBehavior() {
+this._behavior++;
+}
+}
+</script>
+
+<!-- let's take it to the next level and make a class. Classes are templates for objects. -->
+
+<script>
+class Dog {
+    // note that when naming a class, it is always Upper Case
+    constructor(name) { // what value makes a specific object from this abstract class
+        this._name = name; // save the original value
+        this._behavior = 0; 
+    }
+
+    get name() { // getter function
+        return this._name;
+    }
+
+    get behavior() {
+        return this._behavior; // getter function
+    }
+
+    incrementBehavior() {
+        this._behavior ++;
+    }
+
+    static makeAFriend() { // a method that gives an animal a friend
+        const friends = ['Adir', 'Hefer', 'Iyal', 'Prosper', 'Marcel'];
+        const randomPick = Math.floor(Math.random()*(friends.length - 1));
+        return friends[randomPick];
+    }
+
+}
+
+const jack = new Dog('Jack'); // Jack is now an object with all the properties and methods 
+// class Dog which it took from. The parameter is an instance of the constructor value in the class
+console.log(jack.name); // here we are running the getter () method
+console.log(jack.behavior) // same thing. This is why use getter and setter methods
+
+jack.incrementBehavior();
+console.log(jack.behavior);
+console.log(Dog.makeAFriend()); // a static method in the parent class must be called from the class name itself, 
+// not the instance name (jack.makeAFriend) throws and error. 
+console.log("Jack's friend is " + Dog.makeAFriend());
+
+// let's create a child class that inherits everything from parent class 
+class Cat extends Dog {
+    // again, when declaring a subclass from a superclass, use the Upper Case convention for naming the class
+    constructor(name, usesLitter) { // we need one value, name, that the superclass (parent class) takes, and another unique to this class
+        super(name); // you must pass the values that the superclass FIRST!!! In this case, class dog, takes.
+        this._usesLitter = usesLitter;
+    }
+
+        get usesLitter() {  // a getter method for the one new value we take in the child (inheritance) class
+            return this._usesLitter;
+        }
+    }
+
+const garfield = new Cat('Garfield', false);
+console.log(garfield.name); // takes value and uses method from parent class
+console.log(garfield.behavior); // take a value from parent (super) class.
+console.log(garfield.usesLitter);
+console.log("Garfield's friend is " + Dog.makeAFriend()); // haha Garfield is a cat calling a method from a dog object
+
+</script>
+
+<script type="text/babel">  // refer to the library you called in the <head> tags
+
+// we are setting templates that are filled when you call this function with the 
+// parameters which become the template. Notice the `` surrounding this text and the ${} calling the values
+function emailReceipt(name, item, price) {
+    console.log(
+        `
+        Hi ${name}, \n
+        You bought a ${item} for NIS ${price}. \n
+        Enjoy your purchase.
+        \n Thanks for shopping with us ${name}.
+        `
+    );
+}
+
+// let's fill the template, kind of like a preview for props and components
+emailReceipt("David", "Sneakers", 250)
+
+
+// how about we combine some arrays and elements
+
+const kittens = ["nussie", "mitten", "hazelnut"];
+const puppies = ["arava", "rover", "odie"];
+
+// use the names of the arrays. To make sure each element gets called individually, 
+// use ... before invoking the array name
+const animals = ["gamal", "karnav", ...kittens, "tzippor", ...puppies, "Iyal"];
+console.log(animals);
+
+</script>
+
+<script type="text/babel">
+    // let's create an object with an array inside the object and a method that loops through the array
+    const fName = {
+        first: 'David',
+            actions: ['hike', 'bike', 'code', 'drink coffee'],
+                printActions: function() {
+                    const _this = this; // get the this into scope with the function
+                    this.actions.forEach(function (action) {
+                        // take this array of actions, and for each element (called action) do the following
+                        const str = _this.first + " has to " + action;
+                        console.log(str);
+                    });
+                }
+    };
+
+    fName.printActions();
+
+</script>
+
+<script type="text/babel">
+
+    // here is how to destructure an array
+    const cities = ['Afula', 'Yokneam', 'Ramat Gan', 'Arad', 'Kiryat Arba'];
+    cities[0]; // give me Afula
+    cities[3]; // give me Arad
+
+    // lets try destructuring
+    const [first, fourth] = ['Afula', 'Yokneam', 'Ramat Gan', 'Arad', 'Kiryat Arba'];
+    console.log(first, fourth); /* prints Afula, Yokneam. [first,fourth] represent 1st (0)
+                                    and 2nd (1) elements of the array */
+
+    // lets try destructuring with greater precision
+    const [one, , , four,] = ['Afula', 'Yokneam', 'Ramat Gan', 'Arad', 'Kiryat Arba'];
+    console.log(one, four); /* prints Afula, Arad. [one,,,four] represent 1st (0)
+    element of the array, followed by , or empty space for second, and another , comma to make
+    the third empty. 'four' is now in the fourth spot so it will pick up element(3), or Arad.
+    the last comma gives an empty value for the last element (5). */
+</script>
+
+<script type="text/babel">
+
+    // here is how to destructure an array
+    const cities = ['Afula', 'Yokneam', 'Ramat Gan', 'Arad', 'Kiryat Arba'];
+    cities[0]; // give me Afula
+    cities[3]; // give me Arad
+
+    // lets try destructuring
+    const [first, fourth] = ['Afula', 'Yokneam', 'Ramat Gan', 'Arad', 'Kiryat Arba'];
+    console.log(first, fourth); /* prints Afula, Yokneam. [first,fourth] represent 1st (0)
+                                    and 2nd (1) elements of the array */
+
+    // lets try destructuring with greater precision
+    const [one, , , four,] = ['Afula', 'Yokneam', 'Ramat Gan', 'Arad', 'Kiryat Arba'];
+    console.log(one, four); /* prints Afula, Arad. [one,,,four] represent 1st (0)
+    element of the array, followed by , or empty space for second, and another , comma to make
+    the third empty. 'four' is now in the fourth spot so it will pick up element(3), or Arad.
+    the last comma gives an empty value for the last element (5). */
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.29/browser.js"></script>
+<script type="text/babel">
+    // let's destructure an object
+    // first, let's declare and then print an object
+    const sandwich = {
+        title: "Reuven",
+        price: 7,
+        description: "A treif delight unless you use cashew cheese.",
+        ingredients: ['bread', 'corned beef', 'dressing', 'sauerkraut', 'cashew cheese']
+    }
+    console.log(sandwich.title); // returns Reuven
+    console.log(sandwich.price); // returns 7
+
+    //Now, let's destructure it and just call the pieces
+    const { title, price } = { // just calling some properties
+        title: "Reuven",
+        price: 7,
+        description: "A treif delight unless you use cashew cheese.",
+        ingredients: ['bread', 'corned beef', 'dressing', 'sauerkraut', 'cashew cheese']
+    }
+    console.log(title); // there is no object name, so just call the property
+    console.log(price); // there is no object name, so just call the property
+    // accomplishes the same results as the previous code block
+
+    // let's get complex -- and show what you can REALLY do!
+    const vacation = {
+        destination: 'Afula',
+        travelers: 2,
+        activity: 'Hummus eating and hiking',
+        cost: 100
+    }
+
+    function vacationMarketing({ destination, activity }) {
+        /* notice how we put the parameters in {} brackets.
+        they come straight from the object property names and
+        represent their values */
+        return `Come to ${destination}! You will love our ${activity}`;
+    }
+
+    console.log(vacationMarketing(vacation)); /* the parameter is the OBJECT that you want
+          which will contain the properties your function calls  after all, we can create an
+          object vacationB with the same properties - then we must choose the parameter. */
+
+</script>
+
+<!-- lets put this to a git committ, then update to github
+cd c://Highway60/"Center Stage Content"/Leiba.com 
+git init
+
+
+git remote add origin https://github.com/DavidBenHorin/leiba.git
+git branch -M main
+git push -u origin main
+
+
+-->
+
+
+</body>
+</html>
